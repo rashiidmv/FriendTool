@@ -1,0 +1,2 @@
+# FriendTool
+Plugin and Stanalone
