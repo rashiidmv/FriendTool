@@ -10,9 +10,9 @@
         public Shell(IShellViewModel vm)
         {
             InitializeComponent();
-            var myResourceDictionary = new ResourceDictionary();
-            myResourceDictionary.Source = new Uri("pack://application:,,,/Friend.Infra;Component/FriendResources.xaml", UriKind.Absolute);
-            Resources.MergedDictionaries.Add(myResourceDictionary);
+            //var myResourceDictionary = new ResourceDictionary();
+            //myResourceDictionary.Source = new Uri("pack://application:,,,/Friend.Infra;Component/FriendResources.xaml", UriKind.Absolute);
+            //Resources.MergedDictionaries.Add(myResourceDictionary);
             ViewModel = vm;
             ViewMode = FlowDocumentReaderViewingMode.Scroll;
 

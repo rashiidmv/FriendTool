@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:QueryWindow.Views"
+             xmlns:local="clr-namespace:QueryWindow.Content"
              xmlns:mycontrols="clr-namespace:QueryWindow.Usercontrols"
             
-             xmlns:QueryWindow="clr-namespace:QueryWindow" x:Class="QueryWindow.Views.Main"
+             xmlns:QueryWindow="clr-namespace:QueryWindow" x:Class="QueryWindow.Content.Main"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
@@ -43,7 +43,7 @@
             </DockPanel>
         </Expander>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-            <TextBlock Text="Database:" VerticalAlignment="Center" />
+            <TextBlock Text="Database:" VerticalAlignment="Center"  FontWeight="Normal" />
             <ComboBox DockPanel.Dock="Top" ItemsSource="{Binding DataBaseNames}" IsEnabled="{Binding CanSelectDB}" SelectedValue="{Binding CurrentDatabase}" ToolTip="Select database"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
@@ -67,7 +67,7 @@
                 </Grid.RowDefinitions>
                 <mycontrols:Intellisense Grid.Row="0"/>
                 <WrapPanel Grid.Row="1" Width="Auto">
-                    <CheckBox Content="Hold last results" IsChecked="{Binding HoldLastResult}" VerticalAlignment="Center" Width="110"/>
+                    <CheckBox Content="Hold last results" IsChecked="{Binding HoldLastResult}" VerticalAlignment="Center"/>
                     <Button Margin="0" Width="100" Content="Execute" 
 						Focusable="True" IsDefault="True" Command="{Binding ExecuteQueryCommand}"/>
                 </WrapPanel>

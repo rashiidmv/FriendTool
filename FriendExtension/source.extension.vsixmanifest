@@ -16,5 +16,7 @@
     <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
     <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="Project" d:ProjectName="Friend.Infra" Path="|Friend.Infra|" AssemblyName="|Friend.Infra;AssemblyName|" />
     <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="Project" d:ProjectName="QueryWindow" Path="|QueryWindow|" AssemblyName="|QueryWindow;AssemblyName|" />
+    <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="Project" d:ProjectName="DataLists" Path="|DataLists|" AssemblyName="|DataLists;AssemblyName|" />
+    <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="File" Path="Microsoft.Expression.Interactions.dll" AssemblyName="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
   </Assets>
 </PackageManifest>

@@ -73,6 +73,10 @@
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Microsoft.Expression.Interactions.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="Resources\Photo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
@@ -229,6 +233,10 @@
       <Name>Friend.Infra</Name>
       <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
       <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\FriendModules\DataLists\DataLists.csproj">
+      <Project>{1fb2d29c-5be5-4c67-b1ee-36841b42d1d2}</Project>
+      <Name>DataLists</Name>
     </ProjectReference>
     <ProjectReference Include="..\Modules\Help\Help.csproj">
       <Project>{9c72abe2-0522-4338-ae46-01643b9307c1}</Project>

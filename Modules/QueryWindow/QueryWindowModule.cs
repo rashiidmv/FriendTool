@@ -2,7 +2,7 @@
 using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.Unity;
 using QueryWindow.Navigation;
-using QueryWindow.Views;
+using QueryWindow.Content;
 
 namespace QueryWindow
 {

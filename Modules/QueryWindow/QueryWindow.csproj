@@ -60,11 +60,11 @@
     <Compile Include="Usercontrols\Intellisense.xaml.cs">
       <DependentUpon>Intellisense.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\IMainViewModel.cs" />
-    <Compile Include="Views\Main.xaml.cs">
+    <Compile Include="Content\IMainViewModel.cs" />
+    <Compile Include="Content\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainViewModel.cs" />
+    <Compile Include="Content\MainViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Friend.Infra\Friend.Infra.csproj">
@@ -86,7 +86,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Main.xaml">
+    <Page Include="Content\Main.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace QueryWindow.Views
+namespace QueryWindow.Content
 {
     public partial class Main : UserControl, IView
     {

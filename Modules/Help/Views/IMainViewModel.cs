@@ -2,7 +2,7 @@
 
 namespace Help.Views
 {
-    public interface IMainViewModel : IViewModel
-    {
-    }
+        public interface IMainViewModel : IViewModel
+        {
+        }
 }

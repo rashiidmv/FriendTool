@@ -1,4 +1,5 @@
-﻿using Friend.Infra;
+﻿using DataLists;
+using Friend.Infra;
 using Help;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.Regions;
@@ -27,6 +28,7 @@ namespace FriendExtension
         protected override IModuleCatalog CreateModuleCatalog()
         {
             ModuleCatalog m = new ModuleCatalog();
+            m.AddModule(typeof(DataListModule));
             m.AddModule(typeof(QueryWindowModule)); 
             m.AddModule(typeof(HelpModule)); 
             return m;

@@ -1,18 +1,21 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Friend.Infra">
-
+                    xmlns:local="clr-namespace:QueryWindowMain">
     <Style TargetType="TextBox">
         <Setter Property="Margin" Value="4,6" />
         <Setter Property="MinWidth" Value="100" />
-        <!--<Setter Property="MaxWidth" Value="140" />-->
+        
+    <Setter Property="MaxWidth" Value="140" />
+    
         <Setter Property="Height" Value="24" />
     </Style>
 
     <Style TargetType="PasswordBox">
         <Setter Property="Margin" Value="4,6" />
         <Setter Property="MinWidth" Value="100" />
-        <!--<Setter Property="MaxWidth" Value="140" />-->
+        
+    <Setter Property="MaxWidth" Value="140" />
+    
         <Setter Property="Height" Value="24" />
     </Style>
     <Style TargetType="ComboBox">
@@ -24,7 +27,7 @@
     <Style TargetType="Button">
         <Setter Property="Margin" Value="4,6" />
         <Setter Property="MinWidth" Value="100" />
-        <Setter Property="Height" Value="24" />
+        <Setter Property="Height" Value="28" />
     </Style>
     <Style TargetType="TextBlock">
         <Setter Property="Margin" Value="4,3" />

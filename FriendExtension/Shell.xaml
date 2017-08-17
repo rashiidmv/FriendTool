@@ -11,13 +11,14 @@
              Name="MyToolWindow" 
              >
     <UserControl.Resources>
+        <Style TargetType="TabItem">
+            <Setter Property="Header" Value="{Binding DataContext.Title}"/>
+        </Style>
         <Style TargetType="FlowDocumentReader">
             <Setter Property="ViewingMode" Value="Scroll"/>
         </Style>
     </UserControl.Resources>
     <DockPanel LastChildFill="True">
-        <StackPanel  Orientation="Horizontal"
-            DockPanel.Dock="Top" prism:RegionManager.RegionName="{x:Static infra:RegionNames.ToolbarRegion}" />
-        <ContentControl prism:RegionManager.RegionName="{x:Static infra:RegionNames.ContentRegion}" />
+        <TabControl prism:RegionManager.RegionName="{x:Static infra:RegionNames.ContentRegion}" />
     </DockPanel>
 </UserControl>

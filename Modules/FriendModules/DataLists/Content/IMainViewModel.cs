@@ -1,6 +1,7 @@
-﻿using Friend.Infra;
+﻿
+using Friend.Infra;
 
-namespace QueryWindow.Views
+namespace DataLists.Content
 {
     public interface IMainViewModel : IViewModel
     {

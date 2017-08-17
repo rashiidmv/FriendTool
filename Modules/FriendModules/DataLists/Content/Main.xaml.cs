@@ -1,7 +1,7 @@
 ﻿using Friend.Infra;
 using System.Windows.Controls;
 
-namespace Help.Views
+namespace DataLists.Content
 {
     public partial class Main : UserControl, IView
     {

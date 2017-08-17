@@ -11,7 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace QueryWindow.Views
+namespace QueryWindow.Content
 {
     //Provider=SQLOLEDB.1;Password=Lifeis4GoodGood;Persist Security Info=True;User ID = sa
     //Provider=SQLOLEDB.1;Integrated Security = SSPI; Persist Security Info=False

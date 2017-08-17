@@ -8,16 +8,24 @@
         xmlns:local="clr-namespace:FriendMain"
          MinHeight="670" MinWidth="910" Width="910" Height="670"
         mc:Ignorable="d"
+        Background="#FFFFFF"
         Title="Friend"  HorizontalAlignment="Center" VerticalAlignment="Center" 
-        WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight">
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Window.Resources>
-        <Style  x:Key="StackPanelStyle" TargetType="{x:Type StackPanel}">
-            <Setter Property="Background" Value="AliceBlue" />
-        </Style>
-        <Style TargetType="Grid">
-            <Setter Property="Background" Value="Azure" />
-        </Style>
-        <Style TargetType="TabItem">
+            <!--<Style x:Key="TextBlockStyle" TargetType="TextBlock"  >
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="Foreground" Value="#FF00AADE" />
+            </Style>
+            <Style  TargetType="TextBlock">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="Foreground" Value="#FF00AADE" />
+            </Style>
+        
+        <Style BasedOn="{StaticResource TextBlockStyle}" TargetType="{x:Type TextBlock}" />-->
+      
+        <Style TargetType="TabItem" BasedOn="{StaticResource TabItemKey}" >
             <Setter Property="Header" Value="{Binding DataContext.Title}"/>
         </Style>
         <Style TargetType="FlowDocumentReader">
@@ -25,12 +33,13 @@
             <Setter Property="Width" Value="{Binding Path=MinWidth, RelativeSource={RelativeSource AncestorType={x:Type Window},Mode=FindAncestor}}"/>
             <Setter Property="Height" Value="{Binding Path=MinHeight, RelativeSource={RelativeSource AncestorType={x:Type Window},Mode=FindAncestor}}"/>
         </Style>
+        <SolidColorBrush x:Key="BackgroundKey" Color="#FFFFFF" />
     </Window.Resources>
     <DockPanel LastChildFill="True" 
                >
         <!--<StackPanel  Orientation="Vertical" Style="{StaticResource StackPanelStyle}"
             DockPanel.Dock="Left" prism:RegionManager.RegionName="{x:Static infra:RegionNames.ToolbarRegion}" />-->
-        <TabControl  prism:RegionManager.RegionName="{x:Static infra:RegionNames.ContentRegion}">
+        <TabControl Background="{StaticResource BackgroundKey}"  prism:RegionManager.RegionName="{x:Static infra:RegionNames.ContentRegion}">
         </TabControl>
 
     </DockPanel>

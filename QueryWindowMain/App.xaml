@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:QueryWindowMain"
 >
     <Application.Resources>
-         
+        <!--<ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/QueryWindowMainStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>-->
     </Application.Resources>
 </Application>
