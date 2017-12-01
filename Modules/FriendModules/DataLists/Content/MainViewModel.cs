@@ -8,6 +8,7 @@ using System.Xml;
 using System;
 using System.Windows;
 using System.Windows.Threading;
+using System.Threading;
 
 namespace DataLists.Content
 {
@@ -25,7 +26,7 @@ namespace DataLists.Content
                 IsBusyIndicator = true;
                 if (isOverride == true && OverrideDataListSet == null)
                 {
-                    initialize();
+                    MainViewModel_initialize();
                 }
                 else if (isOverride == true)
                 {
@@ -36,6 +37,10 @@ namespace DataLists.Content
                 {
                     RemoveOverrideItems();
                     IsBusyIndicator = false;
+                }
+                if (CanExecuteSearch())
+                {
+                    ExecuteSearch();
                 }
             }
         }
@@ -93,7 +98,6 @@ namespace DataLists.Content
             {
                 searchText = value;
                 OnPropertyChanged("SearchText");
-                updateBusyIndicator();
                 searchCommand.RaiseCanExecuteChanged();
                 if (CanExecuteSearch())
                 {
@@ -101,24 +105,11 @@ namespace DataLists.Content
                 }
                 else
                 {
-                    //loadOriginal(OriginalDataListSet);
-                    updateDataListResultSet(OriginalDataListSet);
+                    DataListResultSet = new ObservableCollection<DataListResult>(OriginalDataListSet);
                 }
             }
         }
-        //private async void MainViewModel_loadOriginal()
-        //{
-        //    await LoadOriginalData();
-        //}
-        //private async Task LoadOriginalData()
-        //{
-        //    await Task.Run(() =>
-        //    {
-        //        DataListResultSet = new ObservableCollection<DataListResult>(OriginalDataListSet);
-        //        IsBusyIndicator = false;
-        //    }
-        //    );
-        //}
+
         private ObservableCollection<DataListResult> dataListResultSet;
 
         public ObservableCollection<DataListResult> DataListResultSet
@@ -162,31 +153,14 @@ namespace DataLists.Content
         public delegate void Initialize();
         public event Initialize initialize = delegate { };
 
-        //public delegate void LoadOriginal();
-        //public event LoadOriginal loadOriginal = delegate { };
-
-        //public delegate void LoadSearchResult();
-        //public event LoadSearchResult loadSearchResult = delegate { };
-
-        public delegate void UpdateDataListResultSet(List<DataListResult> dataListResultSet);
-        public event UpdateDataListResultSet updateDataListResultSet = delegate { };
-
-        public delegate void UpdateBusyIndicator();
-        public event UpdateBusyIndicator updateBusyIndicator = delegate { };
-
         public MainViewModel()
         {
             SearchCommand = new DelegateCommand(ExecuteSearch, CanExecuteSearch);
             CopyXMLCommand = new DelegateCommand<DataListResult>(ExecuteCopyXML, CanExecuteCopyXML);
             CopyTextCommand = new DelegateCommand<DataListResult>(ExecuteCopyText, CanExecuteCopyText);
             initialize += MainViewModel_initialize;
-            //      loadOriginal += MainViewModel_loadOriginal;
-            //  loadSearchResult += MainViewModel_loadSearchResult;
-            updateDataListResultSet += MainViewModel_updateDataListResultSet;
-            updateBusyIndicator += MainViewModel_updateBusyIndicator;
             IsOverride = false;
             IsBusyWholeContent = true;
-
         }
 
         private async void MainViewModel_updateDataListResultSet(List<DataListResult> dataListResultSet)
@@ -199,25 +173,27 @@ namespace DataLists.Content
               );
         }
 
-        private void MainViewModel_updateBusyIndicator()
+        private void MainViewModel_loadSearchResult()
         {
-            IsBusyIndicator = true;
+            Thread.Sleep(500);
+            Application.Current.Dispatcher.InvokeAsync(() =>
+            {
+                DataListResultSet = new ObservableCollection<DataListResult>(temp);
+
+            });
         }
-
-        //private async void MainViewModel_loadSearchResult()
-        //{
-        //    await Task.Run(() =>
-        //    {
-        //        DataListResultSet = new ObservableCollection<DataListResult>(SearchResult);
-        //        IsBusyIndicator = false;
-        //    }
-        //     );
-        //}
-
+        List<DataListResult> temp = null;
         public async void MainViewModel_initialize()
         {
-            DataListResultSet = new ObservableCollection<DataListResult>();
-            await LoadFromXml();
+            Task<List<DataListResult>> task = new Task<List<DataListResult>>(LoadFromXml);
+            task.Start();
+            await task;
+            IsBusyWholeContent = false;
+            temp = task.Result;
+            Task task1 = new Task(MainViewModel_loadSearchResult);
+            task1.Start();
+            await task1;
+            IsBusyIndicator = false;
         }
 
         private bool CanExecuteCopyText(DataListResult dataListResult)
@@ -259,100 +235,98 @@ namespace DataLists.Content
                 }
             }
            );
-            DataListResultSet.Clear();
-            if (searchResult.Count == 0)
+            Application.Current.Dispatcher.Invoke(() =>
             {
-                searchResult.Add(new DataListResult() { ResultStatus = "NotFound" });
-            }
-            updateDataListResultSet(searchResult);
+                DataListResultSet.Clear();
+                if (searchResult.Count == 0)
+                {
+                    searchResult.Add(new DataListResult() { ResultStatus = "NotFound" });
+                }
+                DataListResultSet = new ObservableCollection<DataListResult>(searchResult);
+                IsBusyIndicator = false;
+            });
         }
 
-        private async Task LoadFromXml()
+        private List<DataListResult> LoadFromXml()
         {
-            await Task.Run(() =>
+            Thread.Sleep(500);
+            List<DataListResult> temp = null;
+            //string source = @"C:\Users\rvayalil001\Documents\Rashid\P66\ConfigurationData\System\DataListConfiguration.config";
+            string source = @"C:\Users\rvayalil001\Documents\Rashid\P66\ConfigurationData\System\DataListConfiguration.config";
+            if (IsOverride)
             {
-                List<DataListResult> temp = null;
-                //string source = @"C:\Users\rvayalil001\Documents\Rashid\P66\ConfigurationData\System\DataListConfiguration.config";
-                string source = @"C:\Users\rvayalil001\Documents\Rashid\P66\ConfigurationData\System\DataListConfiguration.config";
-                if (IsOverride)
+                source = @"C:\Users\rvayalil001\Documents\Rashid\P66\ConfigurationData\System\Override\DataListConfiguration.config";
+            }
+            string dataLists = File.ReadAllText(source);
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(dataLists);
+            if (doc.HasChildNodes)
+            {
+                foreach (XmlNode item in doc.ChildNodes)
                 {
-                    source = @"C:\Users\rvayalil001\Documents\Rashid\P66\ConfigurationData\System\Override\DataListConfiguration.config";
-                }
-                string dataLists = File.ReadAllText(source);
-                XmlDocument doc = new XmlDocument();
-                doc.LoadXml(dataLists);
-                if (doc.HasChildNodes)
-                {
-                    foreach (XmlNode item in doc.ChildNodes)
+                    if (item.Name.Equals("DataListConfiguration"))
                     {
-                        if (item.Name.Equals("DataListConfiguration"))
+                        temp = new List<DataListResult>();
+                        if (item.HasChildNodes)
                         {
-                            temp = new List<DataListResult>();
-                            if (item.HasChildNodes)
+                            foreach (XmlNode dataListNode in item.ChildNodes)
                             {
-                                foreach (XmlNode dataListNode in item.ChildNodes)
+                                if (dataListNode.Name.Equals("SqlDataList"))
                                 {
-                                    if (dataListNode.Name.Equals("SqlDataList"))
+                                    DataListResult dataList = new DataListResult();
+                                    if (dataListNode.HasChildNodes)
                                     {
-                                        DataListResult dataList = new DataListResult();
-                                        if (dataListNode.HasChildNodes)
+                                        foreach (XmlNode child in dataListNode.ChildNodes)
                                         {
-                                            foreach (XmlNode child in dataListNode.ChildNodes)
+                                            if (child.InnerText.Trim() != String.Empty)
                                             {
-                                                if (child.InnerText.Trim() != String.Empty)
+                                                if (child.Name.Equals("DataListName"))
                                                 {
-                                                    if (child.Name.Equals("DataListName"))
-                                                    {
-                                                        dataList.DataListName = child.InnerText.Trim();
-                                                    }
-                                                    else if (child.Name.Equals("DisplayName"))
-                                                    {
-                                                        dataList.DisplayName = child.InnerText.Trim();
-                                                    }
-                                                    else if (child.Name.Equals("CommandText"))
-                                                    {
-                                                        dataList.CommandText = child.InnerText.Trim();
-                                                    }
-                                                    else if (child.Name.Equals("CacheBehavior"))
-                                                    {
-                                                        dataList.CacheBehavior = child.InnerText.Trim();
-                                                    }
-                                                    else if (child.Name.Equals("KeyColumnName"))
-                                                    {
-                                                        dataList.KeyColumnName = child.InnerText.Trim();
-                                                    }
-                                                    else if (child.Name.Equals("DefaultDisplayColumnName"))
-                                                    {
-                                                        dataList.DefaultDisplayColumnName = child.InnerText.Trim();
-                                                    }
+                                                    dataList.DataListName = child.InnerText.Trim();
+                                                }
+                                                else if (child.Name.Equals("DisplayName"))
+                                                {
+                                                    dataList.DisplayName = child.InnerText.Trim();
+                                                }
+                                                else if (child.Name.Equals("CommandText"))
+                                                {
+                                                    dataList.CommandText = child.InnerText.Trim();
+                                                }
+                                                else if (child.Name.Equals("CacheBehavior"))
+                                                {
+                                                    dataList.CacheBehavior = child.InnerText.Trim();
+                                                }
+                                                else if (child.Name.Equals("KeyColumnName"))
+                                                {
+                                                    dataList.KeyColumnName = child.InnerText.Trim();
+                                                }
+                                                else if (child.Name.Equals("DefaultDisplayColumnName"))
+                                                {
+                                                    dataList.DefaultDisplayColumnName = child.InnerText.Trim();
                                                 }
                                             }
                                         }
-                                        temp.Add(dataList);
-                                        DataListResultSet.Add(dataList);
                                     }
+                                    temp.Add(dataList);
                                 }
                             }
                         }
                     }
                 }
-                if (temp != null && temp.Count > 0)
-                {
-                    // DataListResultSet = new ObservableCollection<DataListResult>(temp);
-                    if (IsOverride && OverrideDataListSet == null)
-                    {
-                        OverrideDataListSet = temp;
-                        OriginalDataListSet.AddRange(OverrideDataListSet);
-                    }
-                    else
-                    {
-                        OriginalDataListSet = temp;
-                    }
-                }
-                IsBusyWholeContent = false;
-                IsBusyIndicator = false;
             }
-            );
+            if (temp != null && temp.Count > 0)
+            {
+                if (IsOverride && OverrideDataListSet == null)
+                {
+                    OverrideDataListSet = temp;
+                    OriginalDataListSet.AddRange(OverrideDataListSet);
+                }
+                else
+                {
+                    OriginalDataListSet = temp;
+                }
+            }
+            return temp;
         }
         private void DummyFunctionToMakeSureReferencesGetCopiedProperly_DO_NOT_DELETE_THIS_CODE()
         {

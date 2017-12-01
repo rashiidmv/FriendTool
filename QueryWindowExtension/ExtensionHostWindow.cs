@@ -16,7 +16,7 @@
     /// implementation of the IVsUIElementPane interface.
     /// </para>
     /// </remarks>
-    [Guid("2b008ba6-0b84-4eb7-bb24-91b50a86fef1")]
+    [Guid("2b008ba6-0b84-4eb7-bb24-91b50a86fef2")]
     public class ExtensionHostWindow : ToolWindowPane
     {
         /// <summary>

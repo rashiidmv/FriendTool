@@ -18,5 +18,6 @@
     <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="Project" d:ProjectName="QueryWindow" Path="|QueryWindow|" AssemblyName="|QueryWindow;AssemblyName|" />
     <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="Project" d:ProjectName="DataLists" Path="|DataLists|" AssemblyName="|DataLists;AssemblyName|" />
     <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="File" Path="Microsoft.Expression.Interactions.dll" AssemblyName="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="File" Path="DotNetProjects.Wpf.Extended.Toolkit.dll" AssemblyName="DotNetProjects.Wpf.Extended.Toolkit, Version=3.0.27.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4" />
   </Assets>
 </PackageManifest>

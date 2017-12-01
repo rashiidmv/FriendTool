@@ -35,7 +35,7 @@ namespace QueryWindowExtension
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)] // Info on this package for Help/About
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideToolWindow(typeof(ExtensionHostWindow), Style = Microsoft.VisualStudio.Shell.VsDockStyle.Tabbed,
-    Window = "3ae79031-e1bc-11d0-8f78-00a0c9110057")]
+    Window = "3ae79031-e1bc-11d0-8f78-00a0c9110058")]
     [Guid(ExtensionPackage.PackageGuidString)]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
     public sealed class ExtensionPackage : Package
@@ -43,7 +43,7 @@ namespace QueryWindowExtension
         /// <summary>
         /// ExtensionPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "6004d009-0de5-473f-937b-cad55568c907";
+        public const string PackageGuidString = "6004d009-0de5-473f-937b-cad55568c908";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ExtensionHostWindow"/> class.

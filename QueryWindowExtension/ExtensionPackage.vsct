@@ -90,10 +90,10 @@
 
   <Symbols>
     <!-- This is the package guid. -->
-    <GuidSymbol name="guidFirstToolWindowPackage" value="{6004d009-0de5-473f-937b-cad55568c907}" />
+    <GuidSymbol name="guidFirstToolWindowPackage" value="{6004d009-0de5-473f-937b-cad55568c908}" />
 
     <!-- This is the guid used to group the menu commands together -->
-    <GuidSymbol name="guidFirstToolWindowPackageCmdSet" value="{051cf9c6-cef7-4f81-9a3e-a0ae4ba95536}">
+    <GuidSymbol name="guidFirstToolWindowPackageCmdSet" value="{051cf9c6-cef7-4f81-9a3e-a0ae4ba95537}">
       <IDSymbol name="FirstToolWindowCommandId" value="0x0100" />
 
       <IDSymbol name="ToolbarID" value="0x1000" />

@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{4BE1FADF-1E20-4F4C-99FF-1AE22E120EBD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FriendModules", "FriendModules", "{FCE74CA8-F7DD-4482-A519-6F05E423E47D}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriendMain", "FriendMain\FriendMain.csproj", "{17B35E2D-DE84-4BB0-AB67-C8BDA315D1AD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Friend.Infra", "Friend.Infra\Friend.Infra.csproj", "{DBF30D16-4C3C-467B-9284-41911D4755C1}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{4BE1FADF-1E20-4F4C-99FF-1AE22E120EBD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriendExtension", "FriendExtension\FriendExtension.csproj", "{D06DB76A-068D-4E28-8D56-B5DBCD6F4828}"
 EndProject
@@ -22,8 +24,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryWindowExtension", "QueryWindowExtension\QueryWindowExtension.csproj", "{3C487FFA-1D1A-4628-BB47-3456138CB191}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainStyles", "MainStyles\MainStyles.csproj", "{858A9B78-33B4-4123-8FD0-494996C482D4}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FriendModules", "FriendModules", "{FCE74CA8-F7DD-4482-A519-6F05E423E47D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLists", "Modules\FriendModules\DataLists\DataLists.csproj", "{1FB2D29C-5BE5-4C67-B1EE-36841B42D1D2}"
 EndProject
@@ -196,9 +196,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{FCE74CA8-F7DD-4482-A519-6F05E423E47D} = {4BE1FADF-1E20-4F4C-99FF-1AE22E120EBD}
 		{2318C814-D035-4036-B75F-E2F0E421DCA1} = {4BE1FADF-1E20-4F4C-99FF-1AE22E120EBD}
 		{9C72ABE2-0522-4338-AE46-01643B9307C1} = {4BE1FADF-1E20-4F4C-99FF-1AE22E120EBD}
-		{FCE74CA8-F7DD-4482-A519-6F05E423E47D} = {4BE1FADF-1E20-4F4C-99FF-1AE22E120EBD}
 		{1FB2D29C-5BE5-4C67-B1EE-36841B42D1D2} = {FCE74CA8-F7DD-4482-A519-6F05E423E47D}
 	EndGlobalSection
 EndGlobal

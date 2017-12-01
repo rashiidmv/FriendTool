@@ -13,7 +13,7 @@ namespace DataLists
         protected override void InitializeModules()
         {
             MyRegionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(Main));
-   //         MyRegionManager.RequestNavigate(RegionNames.ContentRegion, typeof(Main).FullName);
+            MyRegionManager.RequestNavigate(RegionNames.ContentRegion, typeof(Main).FullName);
         }
 
         protected override void RegisterTypes()

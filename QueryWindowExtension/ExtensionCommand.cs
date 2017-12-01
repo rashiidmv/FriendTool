@@ -11,7 +11,7 @@ namespace QueryWindowExtension
     internal sealed class ExtensionCommand
     {
 
-        public const string guidFirstToolWindowPackageCmdSet = "051cf9c6-cef7-4f81-9a3e-a0ae4ba95536";  // get the GUID from the .vsct file
+        public const string guidFirstToolWindowPackageCmdSet = "051cf9c6-cef7-4f81-9a3e-a0ae4ba95537";  // get the GUID from the .vsct file
         public const uint cmdidWindowsMedia = 0x100;
         public const int cmdidWindowsMediaOpen = 0x132;
         public const int ToolbarID = 0x1000;
@@ -24,7 +24,7 @@ namespace QueryWindowExtension
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("051cf9c6-cef7-4f81-9a3e-a0ae4ba95536");
+        public static readonly Guid CommandSet = new Guid("051cf9c6-cef7-4f81-9a3e-a0ae4ba95537");
 
         /// <summary>
         /// VS Package that provides this command, not null.

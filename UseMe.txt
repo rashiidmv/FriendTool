@@ -1,2 +1,6 @@
 C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe
 /rootsuffix Exp
+
+
+Debug location
+C:\Users\rvayalil001\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions

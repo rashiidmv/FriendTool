@@ -29,7 +29,6 @@ namespace FriendExtension
         {
             ModuleCatalog m = new ModuleCatalog();
             m.AddModule(typeof(DataListModule));
-            m.AddModule(typeof(QueryWindowModule)); 
             m.AddModule(typeof(HelpModule)); 
             return m;
         }
